@@ -10,6 +10,7 @@ public class coll : MonoBehaviour
         if (collision.gameObject.CompareTag("collider"))
         {
             BoxCollider2D.enabled = false;
+            Debug.Log("debuged");
         }
     }
 }

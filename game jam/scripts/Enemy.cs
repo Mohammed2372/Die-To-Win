@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
- public float Speed = 5f;   
-
+    public float Speed = 5f;
     public GameObject[] enemyPrefabs;
 
     private GameObject GenerateRandomEnemy()
@@ -15,6 +14,7 @@ public class Enemy : MonoBehaviour
 
         // Determine which border the enemy will spawn on
         int randomBorder = Random.Range(0, 3);
+
 
         Vector3 spawnPosition = Vector3.zero;
         Quaternion spawnRotation = Quaternion.identity;
@@ -49,13 +49,14 @@ public class Enemy : MonoBehaviour
         {
             // Attach a Rigidbody component to the enemy instance and set its velocity to move vertically
             Rigidbody2D rb = enemyInstance.GetComponent<Rigidbody2D>();
-            rb.velocity = new Vector2(Speed, 0f); // Adjust the speed as needed
+            rb.velocity = new Vector2(Speed, 0f); // Adjust the speed as 
         }else
         {
             // Attach a Rigidbody component to the enemy instance and set its velocity to move vertically
             Rigidbody2D rb = enemyInstance.GetComponent<Rigidbody2D>();
-            rb.velocity = new Vector2(-Speed, 0f); // Adjust the speed as needed
+            rb.velocity = new Vector2(-Speed, 0f); // Adjust the speed as 
         }
+        
 
         return enemyPrefab;
     }
@@ -68,15 +69,13 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
 
+        timer += Time.deltaTime;
         if (timer > spawnInterval)
         {
             GenerateRandomEnemy();
             timer = 0f;
         }
-       
     }
-   
 }
    

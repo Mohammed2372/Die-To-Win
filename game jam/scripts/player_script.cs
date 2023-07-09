@@ -11,6 +11,7 @@ public class player_script : MonoBehaviour
     public float run_speed = 40f;
     private bool jump = false;
     public Animator animator;
+    [HideInInspector] public int health = 5;
 
 
     // Update is called once per frame
@@ -34,5 +35,51 @@ public class player_script : MonoBehaviour
         animator.SetBool("jump" , true);
         jump = false;
 
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("spike"))
+        {
+            int randommm = Random.Range(0, 4);
+            Destroy(collision.gameObject);
+            if (randommm < 2)
+            {    
+            }
+            if (randommm >= 2)
+            {
+                health--;
+            }
+        }
+        if (collision.gameObject.CompareTag("bullet"))
+        {
+            int randommm = Random.Range(0, 5);
+            Destroy(collision.gameObject);
+            if (randommm < 4)
+            {
+                health++;
+            }
+            if (randommm >= 4)
+            {
+                health--;
+            }
+        }
+        if (collision.gameObject.CompareTag("lazerg"))
+        {
+            health++;
+        }
+        if (collision.gameObject.CompareTag("lazerr"))
+        {
+            health--;
+        }
+        if (collision.gameObject.CompareTag("poison"))
+        {
+            health++;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("health"))
+        {
+            health -= 2;
+            Destroy(collision.gameObject);
+        }
     }
 }

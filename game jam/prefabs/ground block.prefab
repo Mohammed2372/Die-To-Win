@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 708548766111495203}
   - component: {fileID: 1263253992577416323}
   - component: {fileID: 1438838792749484787}
-  - component: {fileID: 2694304029947325077}
+  - component: {fileID: 443435852609525071}
   m_Layer: 1
   m_Name: ground block
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,30 +106,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!61 &2694304029947325077
-BoxCollider2D:
+--- !u!114 &443435852609525071
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7194099613974923706}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 7279e240c6a212e4abf1ce33a68bc6fb, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 1.2235804, y: -0.03761202}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.503937, y: 0.503937}
-    newSize: {x: 0.503937, y: 0.503937}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 17.938795, y: 0.42871296}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 754ecd53185774046ae04a9f6194966b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
