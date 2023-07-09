@@ -20,8 +20,10 @@ public class health : MonoBehaviour
         {
             player.health = 0;
         }
+
         health_lose();
         health_add();
+
     }
     public void DeactivateObjectByName(string objectNameToDeactivate)
     {

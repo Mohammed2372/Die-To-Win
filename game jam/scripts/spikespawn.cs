@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class spikespawn : MonoBehaviour
 {
@@ -14,14 +15,32 @@ public class spikespawn : MonoBehaviour
     private float timer = 0f;
     //private float timer1 = 0f;
     public float gameAreaHeight = 5f;
-
+    public float startAt = 30f;
+    [HideInInspector] public float timer12 = 0f;
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > 8)
+        if (SceneManager.GetActiveScene().name == "Game")
         {
-            GenerateRandomEnemy(enemyPrefabs);
-            timer = 0f;
+            timer12 += Time.deltaTime;
+        }
+
+        timer += Time.deltaTime;
+        if (timer > spawnInterval)
+        {
+            if (timer12 > startAt)
+            {
+                GenerateRandomEnemy(enemyPrefabs);
+                timer = 0f;
+
+                if(timer12 > 60)
+                {
+                    spawnInterval = 6;
+                }
+                if (timer12 > 90)
+                {
+                    spawnInterval = 5;
+                }
+            }
         }
     }
     private GameObject GenerateRandomEnemy(GameObject enemyPrefabs)

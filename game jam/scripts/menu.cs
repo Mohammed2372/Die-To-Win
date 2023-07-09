@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
 public class menu : MonoBehaviour
 {
-
     public void play_game()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Game");
 
     }
 
@@ -19,8 +20,7 @@ public class menu : MonoBehaviour
         Application.Quit();
 
     }
-
-  
+    
 
 
 }

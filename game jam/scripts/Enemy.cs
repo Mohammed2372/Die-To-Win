@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -66,15 +67,30 @@ public class Enemy : MonoBehaviour
     private float timer = 0f;
     public float gameAreaWidth = 10f;
     public float gameAreaHeight = 5f;
+    [HideInInspector] public float timer12 = 0f;
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "Game")
+        {
+            timer12 += Time.deltaTime;
+        }
 
         timer += Time.deltaTime;
         if (timer > spawnInterval)
         {
             GenerateRandomEnemy();
             timer = 0f;
+
+            if (timer12 > 30)
+            {
+                if (timer12> 60)
+                {
+                    spawnInterval = 1f;
+                }
+                else
+                    spawnInterval = 1.3f;
+            }
         }
     }
 }

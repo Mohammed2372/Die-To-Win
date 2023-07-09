@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class bottlesSpawn : MonoBehaviour
 {
@@ -10,15 +11,25 @@ public class bottlesSpawn : MonoBehaviour
 
     public float spawnInterval = 7f;
     private float timer = 0f;
-  
+    public float StartAt = 60f;
+    [HideInInspector] public float timer12 = 0f;
+
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "Game")
+        {
+            timer12 += Time.deltaTime;
+        }
+
         timer += Time.deltaTime;
         if (timer > spawnInterval)
         {
-            GenerateRandomEnemy();
-            timer = 0f;
+            if ( timer12 > StartAt )
+            {
+                GenerateRandomEnemy();
+                timer = 0f;
+            }
         }
     }
     private GameObject GenerateRandomEnemy()
@@ -31,13 +42,27 @@ public class bottlesSpawn : MonoBehaviour
         spawnPosition = new Vector3(Random.Range(-8.15f, 8.15f), 4.1f, 0f);
         transform.TransformVector(0, -Speed, 0);
 
-        if(randomIndex > 3)
+        if (timer12 > StartAt + 30)
         {
-            enemyPrefab = enemyPrefabs[0];
+            if (randomIndex > 1)
+            {
+                enemyPrefab = enemyPrefabs[0];
+            }
+            else
+            {
+                enemyPrefab = enemyPrefabs[1];
+            }
         }
         else
         {
-            enemyPrefab = enemyPrefabs[1];
+            if (randomIndex > 3)
+            {
+                enemyPrefab = enemyPrefabs[0];
+            }
+            else
+            {
+                enemyPrefab = enemyPrefabs[1];
+            }
         }
         GameObject enemyInstance = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
 
