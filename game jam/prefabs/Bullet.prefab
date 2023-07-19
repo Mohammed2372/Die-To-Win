@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 8243893381603748721}
   - component: {fileID: 7251899526733744517}
   - component: {fileID: 424351404476144678}
-  - component: {fileID: 1316167060135315447}
   - component: {fileID: 1544761471621393782}
   - component: {fileID: 6587275973224125362}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet
   m_TagString: bullet
   m_Icon: {fileID: 0}
@@ -30,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 7261497213932272368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0977, y: -0.0428, z: 0}
-  m_LocalScale: {x: 0.8823, y: 0.9109, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,8 +75,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1bb77f9c83b6857408bc09460e3c6e30, type: 3}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 21300000, guid: 9221322fb4d1a02468a73315382044dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -109,19 +108,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1316167060135315447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7261497213932272368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1800823ec242dc7468a131e140201c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BoxCollider2D: {fileID: 0}
 --- !u!114 &1544761471621393782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,14 +130,14 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.66, y: 0.96}
+    oldSize: {x: 2.45, y: 1.41}
     newSize: {x: 1.66, y: 0.96}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -159,22 +145,25 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.45640776, y: 0.0010263282}
-      - {x: 0.43317154, y: 0.0392497}
-      - {x: 0.39660195, y: 0.057766307}
-      - {x: 0.31110045, y: 0.06754638}
-      - {x: 0.19185816, y: 0.055050448}
-      - {x: 0.1321478, y: 0.04553284}
+    - - {x: 0.69111127, y: -0.04174243}
+      - {x: 0.6875689, y: 0.034340728}
+      - {x: 0.5749338, y: 0.09636009}
+      - {x: 0.4713894, y: 0.1243951}
+      - {x: 0.07993938, y: 0.09134239}
+      - {x: -0.4162081, y: 0.048315547}
+      - {x: -0.51463807, y: 0.031961195}
+      - {x: -0.50291866, y: 0.0044407826}
+      - {x: -0.19419728, y: 0.02173685}
       - {x: -0.061650477, y: 0.03124626}
-      - {x: -0.15110016, y: 0.019683074}
+      - {x: -0.24855709, y: -0.030039843}
       - {x: -0.324304, y: 0.01866323}
-      - {x: -0.45886725, y: 0.006959904}
-      - {x: -0.28889945, y: 0.009486828}
-      - {x: -0.18838169, y: 0.002673544}
-      - {x: -0.21860844, y: 0.003277231}
-      - {x: -0.46119773, y: -0.010202713}
-      - {x: -0.21427222, y: -0.028426096}
-      - {x: 0.080420464, y: -0.051246263}
-      - {x: 0.2884465, y: -0.065476514}
-      - {x: 0.3890291, y: -0.059413534}
-      - {x: 0.44792882, y: -0.035273783}
+      - {x: -0.32013065, y: 0.03835637}
+      - {x: -0.45397955, y: 0.01545357}
+      - {x: -0.34550613, y: -0.019204536}
+      - {x: -0.34192127, y: -0.0066673476}
+      - {x: -0.5142698, y: -0.019010745}
+      - {x: -0.23466878, y: -0.047462896}
+      - {x: 0.080420464, y: -0.056005456}
+      - {x: 0.29524535, y: -0.098790914}
+      - {x: 0.42982227, y: -0.10700552}
+      - {x: 0.616903, y: -0.08149279}

@@ -79,6 +79,8 @@ public class player_script : MonoBehaviour
                 hits.Play();
             }
         }
+
+        /*
         if (collision.gameObject.CompareTag("bullet"))
         {
             int randommm = Random.Range(0, 5);
@@ -89,7 +91,6 @@ public class player_script : MonoBehaviour
                 {
                     health++;
                     hps.Play();
-
                 }
                 if (randommm >= 3)
                 {
@@ -103,7 +104,6 @@ public class player_script : MonoBehaviour
                 {
                     health++;
                     hps.Play();
-
                 }
                 if (randommm >= 2)
                 {
@@ -117,7 +117,6 @@ public class player_script : MonoBehaviour
                 {
                     health++;
                     hps.Play();
-
                 }
                 if (randommm >= 4)
                 {
@@ -126,6 +125,7 @@ public class player_script : MonoBehaviour
                 }
             }
         }
+        */
         if (collision.gameObject.CompareTag("lazerg"))
         {
             health++;
@@ -144,6 +144,21 @@ public class player_script : MonoBehaviour
         {
             health -= 2;
             hits.Play();
+            Destroy(collision.gameObject);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("bullet"))
+        {
+            health--;
+            hits.Play();
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("bullet red"))
+        {
+            health++;
+            hps.Play();
             Destroy(collision.gameObject);
         }
     }
