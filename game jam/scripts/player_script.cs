@@ -1,36 +1,52 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class player_script : MonoBehaviour
 {
 
     public CharacterController2D controller;
-    private float horizontal_move = 0f;
+    [HideInInspector] public float horizontal_move = 0f;
     public float run_speed = 40f;
     private bool jump = false;
     public Animator animator;
     [HideInInspector] public int health = 5;
     [HideInInspector] public float timer12 = 0;
+    public  float wintimer;
     public TextMeshProUGUI score_text;
     int rt;
     public int score;
 
     public AudioSource jumps, hits, hps;
+
+    public Button jump_button;
     // Update is called once per frame
+
+    public void Jump()
+    {
+        jump = true;
+        jumps.Play();
+    }
+   
     void Update()
     {
 
 
         horizontal_move = Input.GetAxisRaw("Horizontal") * run_speed;
+
         animator.SetBool("jump", false);
         animator.SetFloat("run" ,Mathf.Abs(horizontal_move) );
 
-
+        
+        
         if (Input.GetButtonDown("Jump"))
         {
+            
             jump = true;
             jumps.Play();
         }
@@ -58,6 +74,7 @@ public class player_script : MonoBehaviour
 
     private void FixedUpdate()
     {
+       
         controller.Move(horizontal_move * Time.fixedDeltaTime, false, jump);
         animator.SetBool("jump" , true);
         jump = false;
@@ -164,7 +181,8 @@ public class player_script : MonoBehaviour
     }
     void die()
     {
-        PlayerPrefs.SetFloat("time", timer12);
+        wintimer = timer12;
+        PlayerPrefs.SetFloat("time", wintimer);  
         SceneManager.LoadScene("win");
     }
 }

@@ -9,23 +9,38 @@ using UnityEngine.SceneManagement;
 public class menu : MonoBehaviour
 {
     public TextMeshProUGUI time;
+    [SerializeField] private TextMeshProUGUI timer12;
+    float timer1;
     private void Start()
     {
-        time.text = "your time: " + PlayerPrefs.GetFloat("time",0).ToString();
+        timer1 = PlayerPrefs.GetFloat("time", 0);
+        updatetimer(timer1);
+
     }
-    public void play_game()
+
+    void play_game()
     {
         SceneManager.LoadScene("Game");
 
     }
 
-    public void quit_game()
+    void quit_game()
     {
         Debug.Log("Quit");
         Application.Quit();
 
     }
-    
+
+    void updatetimer(float currenttimer)
+    {
+        currenttimer += 1;
+
+        float minutes = Mathf.FloorToInt(currenttimer / 60);
+        float seconds = Mathf.FloorToInt(currenttimer % 60);
+
+        timer12.text = string.Format("{0:00} : {1:00}", minutes, seconds);
+
+    }
 
 
 }
