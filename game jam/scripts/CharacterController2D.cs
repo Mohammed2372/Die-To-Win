@@ -132,7 +132,18 @@ public class CharacterController2D : MonoBehaviour
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
         }
     }
-
+    public void MoveRIght()
+    {
+        Vector3 targetVelocity = new Vector2(GetComponent<player_script>().run_speed * Time.fixedDeltaTime * 10f, m_Rigidbody2D.velocity.y);
+        // And then smoothing it out and applying it to the character
+        m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+    }
+    public void MoveLeft()
+    {
+        Vector3 targetVelocity = new Vector2(GetComponent<player_script>().run_speed * Time.fixedDeltaTime * -10f, m_Rigidbody2D.velocity.y);
+        // And then smoothing it out and applying it to the character
+        m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+    }
 
     private void Flip()
     {

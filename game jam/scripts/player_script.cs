@@ -1,14 +1,17 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class player_script : MonoBehaviour
 {
 
     public CharacterController2D controller;
-    private float horizontal_move = 0f;
+    [HideInInspector] public float horizontal_move = 0f;
     public float run_speed = 40f;
     private bool jump = false;
     public Animator animator;
@@ -20,18 +23,30 @@ public class player_script : MonoBehaviour
     public int score;
 
     public AudioSource jumps, hits, hps;
+
+    public Button jump_button;
     // Update is called once per frame
+
+    public void Jump()
+    {
+        jump = true;
+        jumps.Play();
+    }
+   
     void Update()
     {
 
 
         horizontal_move = Input.GetAxisRaw("Horizontal") * run_speed;
+
         animator.SetBool("jump", false);
         animator.SetFloat("run" ,Mathf.Abs(horizontal_move) );
 
-
+        
+        
         if (Input.GetButtonDown("Jump"))
         {
+            
             jump = true;
             jumps.Play();
         }
@@ -59,6 +74,7 @@ public class player_script : MonoBehaviour
 
     private void FixedUpdate()
     {
+       
         controller.Move(horizontal_move * Time.fixedDeltaTime, false, jump);
         animator.SetBool("jump" , true);
         jump = false;
