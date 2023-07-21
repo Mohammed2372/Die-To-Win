@@ -164,6 +164,7 @@ public class player_script : MonoBehaviour
     }
     void die()
     {
+        PlayerPrefs.SetFloat("time", timer12);
         SceneManager.LoadScene("win");
     }
 }

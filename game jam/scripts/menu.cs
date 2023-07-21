@@ -8,6 +8,11 @@ using UnityEngine.SceneManagement;
 
 public class menu : MonoBehaviour
 {
+    public TextMeshProUGUI time;
+    private void Start()
+    {
+        time.text = "your time: " + PlayerPrefs.GetFloat("time",0).ToString();
+    }
     public void play_game()
     {
         SceneManager.LoadScene("Game");
