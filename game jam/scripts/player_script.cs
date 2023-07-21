@@ -14,6 +14,7 @@ public class player_script : MonoBehaviour
     public Animator animator;
     [HideInInspector] public int health = 5;
     [HideInInspector] public float timer12 = 0;
+    public  float wintimer;
     public TextMeshProUGUI score_text;
     int rt;
     public int score;
@@ -164,6 +165,8 @@ public class player_script : MonoBehaviour
     }
     void die()
     {
+        wintimer = timer12;
+        PlayerPrefs.SetFloat("time", wintimer);  
         SceneManager.LoadScene("win");
     }
 }
