@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class menu : MonoBehaviour
 {
-    public TextMeshProUGUI time;
     [SerializeField] private TextMeshProUGUI timer12;
     float timer1;
     private void Start()

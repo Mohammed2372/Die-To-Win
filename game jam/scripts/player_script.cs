@@ -31,24 +31,43 @@ public class player_script : MonoBehaviour
     {
         jump = true;
         jumps.Play();
+        animator.SetBool("jump" , true);
     }
-   
+    public void moveright()
+    {
+        horizontal_move = 1f * run_speed;
+    }
+    public void moveleft()
+    {
+        horizontal_move = -1f * run_speed;
+    }
     void Update()
     {
 
 
-        horizontal_move = Input.GetAxisRaw("Horizontal") * run_speed;
+        //horizontal_move = Input.GetAxisRaw("Horizontal") * run_speed;
+
+
+        
+        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            moveleft();
+        }
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
+            moveright();
+        }
+        else
+        {
+            horizontal_move = 0;
+        }
 
         animator.SetBool("jump", false);
         animator.SetFloat("run" ,Mathf.Abs(horizontal_move) );
 
-        
-        
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
         {
-            
-            jump = true;
-            jumps.Play();
+            Jump();
         }
 
         if (health <= 0)
@@ -76,7 +95,6 @@ public class player_script : MonoBehaviour
     {
        
         controller.Move(horizontal_move * Time.fixedDeltaTime, false, jump);
-        animator.SetBool("jump" , true);
         jump = false;
 
     }
