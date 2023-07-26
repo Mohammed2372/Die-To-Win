@@ -15,7 +15,7 @@ public class lazer : MonoBehaviour
 
     //timers
     public float spawn_time = 5f ;
-    private float lazer_shown_time = 3f;
+    public float lazer_shown_time = 3f;
     private float faded_shown_time = 0.5f;
     
     private float purple_time;
@@ -75,7 +75,7 @@ public class lazer : MonoBehaviour
             Destroy(spawned);
             spawn_lazer(purple_lazer, false);
 
-            yield return new WaitForSeconds(purple_time);
+            yield return new WaitForSeconds(lazer_shown_time);
             Destroy(spawned);
         }
     }

@@ -17,7 +17,8 @@ public class player_script : MonoBehaviour
     public Animator animator;
     [HideInInspector] public int health = 5;
     [HideInInspector] public float timer12 = 0;
-    public  float wintimer;
+    public float wintimer;
+    public float gameTime = 0f;
     public TextMeshProUGUI score_text;
     int rt;
     public int score;
@@ -103,7 +104,7 @@ public class player_script : MonoBehaviour
         rt = 3000 - rt;
         score = rt;
         ////score_text.text = rt.ToString();
-        if(timer12 > 135)
+        if(timer12 > gameTime)
         {
             SceneManager.LoadScene("lose");
         }

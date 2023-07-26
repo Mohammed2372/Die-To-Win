@@ -19,6 +19,7 @@ public class enemies : MonoBehaviour
 
     public float moveSpeed = 2.0f;
     public float startAt = 0;
+    public float endAt = 0;
     public float TimeToWait = 2;
     public float attackRange = 1.0f;
     
@@ -58,6 +59,10 @@ public class enemies : MonoBehaviour
                     Attack();
                     break;
             }
+        }
+        if(timer12 > endAt)
+        {
+            gameObject.SetActive(false);
         }
     }
     private void Idle()
