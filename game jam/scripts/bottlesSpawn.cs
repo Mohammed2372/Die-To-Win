@@ -12,6 +12,8 @@ public class bottlesSpawn : MonoBehaviour
     public float spawnInterval = 7f;
     private float timer = 0f;
     public float StartAt = 60f;
+    public float[] speedAt, NewSpawnInterval;
+
     [HideInInspector] public float timer12 = 0f;
 
 
@@ -29,6 +31,14 @@ public class bottlesSpawn : MonoBehaviour
             {
                 GenerateRandomEnemy();
                 timer = 0f;
+
+                for (int i = 0; i < speedAt.Length; i++)
+                {
+                    if (timer12 > speedAt[i])
+                    {
+                        spawnInterval = NewSpawnInterval[i];
+                    }
+                }
             }
         }
     }

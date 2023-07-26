@@ -16,6 +16,8 @@ public class spikespawn : MonoBehaviour
     //private float timer1 = 0f;
     public float gameAreaHeight = 5f;
     public float startAt = 30f;
+    public float[] speedAt, NewSpawnInterval;
+
     [HideInInspector] public float timer12 = 0f;
     void Update()
     {
@@ -32,13 +34,12 @@ public class spikespawn : MonoBehaviour
                 GenerateRandomEnemy(enemyPrefabs);
                 timer = 0f;
 
-                if(timer12 > 60)
+                for (int i = 0; i < speedAt.Length; i++)
                 {
-                    spawnInterval = 6;
-                }
-                if (timer12 > 90)
-                {
-                    spawnInterval = 5;
+                    if (timer12 > speedAt[i])
+                    {
+                        spawnInterval = NewSpawnInterval[i];
+                    }
                 }
             }
         }

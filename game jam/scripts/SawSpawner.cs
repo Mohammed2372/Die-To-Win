@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,15 +9,19 @@ public class SawSpawner : MonoBehaviour
     public GameObject enemyPrefabs;
     public float width = 20f;
     public float height = 1f;
-   
+
 
     public float spawnInterval = 3f;
     private float timer = 0f;
     private int number = 2;
 
     public float startAt = 30f;
+    public float destroyAt = 3f;
+    public float[] speedAt, NewSpawnInterval;
+
     [HideInInspector] public float timer12 = 0f;
     GameObject enemyInstance;
+
     void Update()
     {
         if (SceneManager.GetActiveScene().name == "Game")
@@ -26,8 +29,8 @@ public class SawSpawner : MonoBehaviour
             timer12 += Time.deltaTime;
         }
         timer += Time.deltaTime;
-       
-       
+
+
         if (timer > spawnInterval)
         {
             if (timer12 > startAt)
@@ -35,21 +38,24 @@ public class SawSpawner : MonoBehaviour
                 GenerateRandomSaw(enemyPrefabs, enemyInstance);
                 timer = 0f;
 
-                if (timer12 > 60)
+                for (int i = 0; i < speedAt.Length; i++)
                 {
-                    spawnInterval = 6;
-                }
-                if (timer12 > 90)
-                {
-                    spawnInterval = 5;
+                    if (timer12 > speedAt[i])
+                    {
+                        spawnInterval = NewSpawnInterval[i];
+                    }
                 }
             }
 
         }
+        if(timer > destroyAt)
+        {
+            Destroy(enemyInstance);
+        }
     }
     private GameObject GenerateRandomSaw(GameObject enemyPrefab, GameObject enemyInstance)
     {
-        int random = Random.Range(-number, number + 1);
+        int random = Random.Range(-number, number);
         Debug.Log(random);
         switch (random)
         {

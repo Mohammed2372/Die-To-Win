@@ -7,6 +7,8 @@ public class collwihtbullet : MonoBehaviour
         if (collision.gameObject.CompareTag("bullet") || collision.gameObject.CompareTag("bullet red"))
         {
             Destroy(collision.gameObject);
+            /// instead of destroying, set active them false
+            //gameObject.SetActive(false);
         }
     }
 }

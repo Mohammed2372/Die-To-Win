@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6912908212827623548}
   m_Layer: 0
   m_Name: saw
-  m_TagString: Untagged
+  m_TagString: saw
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!58 &6912908212827623548
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -120,6 +119,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.000000059604645}
+  m_Offset: {x: -0.0033905506, y: -0.0033905506}
   serializedVersion: 2
-  m_Radius: 0.6303558
+  m_Radius: 0.54220283

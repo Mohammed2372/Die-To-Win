@@ -18,7 +18,7 @@ public class CharacterController2D : MonoBehaviour
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private Vector3 m_Velocity = Vector3.zero;
-
+    public bool right, left = false;
     [Header("Events")]
     [Space]
 
@@ -40,7 +40,22 @@ public class CharacterController2D : MonoBehaviour
         if (OnCrouchEvent == null)
             OnCrouchEvent = new BoolEvent();
     }
+    private void Update()
+    {
+        if (right)
+        {
+            Vector3 targetVelocity = new Vector2(GetComponent<player_script>().run_speed * Time.fixedDeltaTime * 10f, m_Rigidbody2D.velocity.y);
+            m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+        }
+        if (left)
+        {
+            Vector3 targetVelocity = new Vector2(GetComponent<player_script>().run_speed * Time.fixedDeltaTime * -10f, m_Rigidbody2D.velocity.y);
+            m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+        }
 
+        GetComponent<player_script>().animator.SetFloat("run", Mathf.Abs(GetComponent<player_script>().horizontal_move));
+
+    }
     private void FixedUpdate()
     {
         bool wasGrounded = m_Grounded;
@@ -132,17 +147,13 @@ public class CharacterController2D : MonoBehaviour
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
         }
     }
-    public void MoveRIght()
+    public void MoveRIght(bool boo)
     {
-        Vector3 targetVelocity = new Vector2(GetComponent<player_script>().run_speed * Time.fixedDeltaTime * 10f, m_Rigidbody2D.velocity.y);
-        // And then smoothing it out and applying it to the character
-        m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+        right = boo;
     }
-    public void MoveLeft()
+    public void MoveLeft(bool boo)
     {
-        Vector3 targetVelocity = new Vector2(GetComponent<player_script>().run_speed * Time.fixedDeltaTime * -10f, m_Rigidbody2D.velocity.y);
-        // And then smoothing it out and applying it to the character
-        m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+        left = boo;
     }
 
     private void Flip()

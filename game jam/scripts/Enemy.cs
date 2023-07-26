@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,7 +9,6 @@ public class Enemy : MonoBehaviour
 {
     public float Speed = 5f;
     public GameObject[] enemyPrefabs;
-
     private GameObject GenerateRandomEnemy()
     {
         int randomIndex = 0;
@@ -38,7 +38,18 @@ public class Enemy : MonoBehaviour
         }
 
         GameObject enemyPrefab = enemyPrefabs[randomIndex];
+
         GameObject enemyInstance = Instantiate(enemyPrefab, spawnPosition, spawnRotation);
+
+        //// instead of instantaite and create alot of bullets, make 20 bullets and active or inactive them then reuse them again
+        //GameObject enemyInstance = ObjectPool.instance.getPooledObject();
+
+        //if(enemyInstance != null)
+        //{
+        //    enemyInstance.transform.position = spawnPosition;
+        //    enemyInstance.transform.rotation = spawnRotation;
+        //    enemyInstance.SetActive(true);
+        //}
 
         // If the enemy is spawned from the top or bottom border, make it move vertically
         if (randomBorder == 0)
@@ -67,6 +78,8 @@ public class Enemy : MonoBehaviour
     private float timer = 0f;
     public float gameAreaWidth = 10f;
     public float gameAreaHeight = 5f;
+    public float [] speedAt, NewSpawnInterval;
+    //public float spawnIntervalRate = 0.1f;
     [HideInInspector] public float timer12 = 0f;
 
     void Update()
@@ -82,15 +95,21 @@ public class Enemy : MonoBehaviour
             GenerateRandomEnemy();
             timer = 0f;
 
-            if (timer12 > 30)
+            for (int i = 0; i < speedAt.Length; i++)
             {
-                if (timer12> 60)
+                if( timer12 > speedAt[i])
                 {
-                    spawnInterval = 1f;
+                    spawnInterval = NewSpawnInterval[i];
                 }
-                else
-                    spawnInterval = 1.3f;
             }
+            //if (timer12 > speedAt[0] && timer12 < speedAt[1])
+            //{
+            //    spawnInterval = 1.3f;
+            //}
+            //if (timer12 > speedAt[1])
+            //{
+            //    spawnInterval = 1f;
+            //}
         }
     }
 }
