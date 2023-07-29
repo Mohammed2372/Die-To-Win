@@ -1,8 +1,5 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
+
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -119,65 +116,10 @@ public class player_script : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("spike"))
         {
-            int randommm = Random.Range(0, 4);
+            health++;
+            hps.Play();
             Destroy(collision.gameObject);
-            if (randommm < 2)
-            {
-                hps.Play();
-            }
-            if (randommm >= 2)
-            {
-                health--;
-                hits.Play();
-            }
         }
-
-        /*
-        if (collision.gameObject.CompareTag("bullet"))
-        {
-            int randommm = Random.Range(0, 5);
-            Destroy(collision.gameObject);
-            if (timer12 > 60)
-            {
-                if (randommm < 3)
-                {
-                    health++;
-                    hps.Play();
-                }
-                if (randommm >= 3)
-                {
-                    health--;
-                    hits.Play();
-                }
-            }
-            else if (timer12 > 120)
-            {
-                if (randommm < 2)
-                {
-                    health++;
-                    hps.Play();
-                }
-                if (randommm >= 2)
-                {
-                    health--;
-                    hits.Play();
-                }
-            }
-            else
-            {
-                if (randommm < 4)
-                {
-                    health++;
-                    hps.Play();
-                }
-                if (randommm >= 4)
-                {
-                    health--;
-                    hits.Play();
-                }
-            }
-        }
-        */
         if (collision.gameObject.CompareTag("lazerg"))
         {
             health++;
@@ -194,7 +136,7 @@ public class player_script : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("health"))
         {
-            health -= 2;
+            health --;
             hits.Play();
             Destroy(collision.gameObject);
         }

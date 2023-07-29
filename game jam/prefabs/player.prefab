@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7576290322386377838}
   - component: {fileID: 7576290322386377835}
   - component: {fileID: 7576290322386377834}
-  - component: {fileID: 78432270929136813}
   - component: {fileID: 7576290322386377845}
   - component: {fileID: 7576290322386377844}
   - component: {fileID: 7576290322386377839}
@@ -164,6 +163,7 @@ MonoBehaviour:
   health: 5
   timer12: 0
   wintimer: 0
+  gameTime: 0
   score_text: {fileID: 0}
   score: 0
   jumps: {fileID: 7576290322386377837}
@@ -171,25 +171,6 @@ MonoBehaviour:
   hps: {fileID: 7576290322386377839}
   jump_button: {fileID: 0}
   joystick: {fileID: 0}
---- !u!114 &78432270929136813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 78432270929136812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45bf9140624e2a54ebe29c878ea9ef17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  green_lazer: {fileID: 8802855504153559706, guid: 10580247cad742048a54dc2b413e86ac, type: 3}
-  red_lazer: {fileID: 6863246355629075570, guid: e972010bf9d729846bbf241b81f62799, type: 3}
-  purple_lazer: {fileID: 7446347893418909159, guid: 2ddabd748a4d8b24e9535d47a7b2c9b0, type: 3}
-  spawn_time: 5
-  green_to_red_ratio: 5
-  rand: 0
-  green: 0
 --- !u!61 &7576290322386377845
 BoxCollider2D:
   m_ObjectHideFlags: 0

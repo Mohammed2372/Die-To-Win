@@ -22,7 +22,11 @@ public class enemies : MonoBehaviour
     public float endAt = 0;
     public float TimeToWait = 2;
     public float attackRange = 1.0f;
-    
+
+    public int[] playerHealth;
+    public float[] newSpeed;
+    public float[] newTimeToWait;
+
     float temptime;
     float timer12 = 0f;
 
@@ -60,7 +64,17 @@ public class enemies : MonoBehaviour
                     break;
             }
         }
-        if(timer12 > endAt)
+
+        for (int i = 0; i < playerHealth.Length; i++)
+        {
+            if (plmv.health == playerHealth[i])
+            {
+                moveSpeed = newSpeed[i];
+                TimeToWait = newTimeToWait[i];
+            }
+        }
+
+        if (timer12 > endAt)
         {
             gameObject.SetActive(false);
         }
@@ -118,7 +132,6 @@ public class enemies : MonoBehaviour
 
         // Attack the player
         plmv.health += 2;
-
         //reset
         temptime = 0;
         

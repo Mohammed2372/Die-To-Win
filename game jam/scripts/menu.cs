@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -37,8 +35,7 @@ public class menu : MonoBehaviour
         float minutes = Mathf.FloorToInt(currenttimer / 60);
         float seconds = Mathf.FloorToInt(currenttimer % 60);
 
-        timer12.text = string.Format("{0:00} : {1:00}", minutes, seconds);
-
+        timer12.text = string.Format("Your Time: " + "{0:00}:{1:00}", minutes, seconds);
     }
 
 

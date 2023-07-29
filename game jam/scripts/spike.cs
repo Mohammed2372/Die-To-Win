@@ -11,12 +11,11 @@ public class spike : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > timer1)
+        timer1 += Time.deltaTime;
+        if (timer1 > destroyinterval)
         {
+            Destroy(gameObject);
             //gameObject.SetActive(false);
-            timer1 += destroyinterval;
-            
-            //EditorUtility.UnloadUnusedAssetsImmediate();
         }
     }
 }

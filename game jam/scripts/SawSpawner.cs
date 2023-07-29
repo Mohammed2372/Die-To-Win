@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,13 +14,15 @@ public class SawSpawner : MonoBehaviour
     private float timer = 0f;
     private int number = 2;
 
+    [HideInInspector] public player_script health;
     public float startAt = 30f;
     public float destroyAt = 3f;
-    public float[] speedAt, NewSpawnInterval;
+    public player_script plmv;
+    public float[] playerHealth, NewSpawnInterval;
 
     [HideInInspector] public float timer12 = 0f;
     GameObject enemyInstance;
-
+    //public int healthp = health.health;
     void Update()
     {
         if (SceneManager.GetActiveScene().name == "Game")
@@ -38,9 +39,9 @@ public class SawSpawner : MonoBehaviour
                 GenerateRandomSaw(enemyPrefabs, enemyInstance);
                 timer = 0f;
 
-                for (int i = 0; i < speedAt.Length; i++)
+                for (int i = 0; i < playerHealth.Length; i++)
                 {
-                    if (timer12 > speedAt[i])
+                    if (plmv.health == playerHealth[i])
                     {
                         spawnInterval = NewSpawnInterval[i];
                     }

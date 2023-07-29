@@ -78,12 +78,16 @@ public class Enemy : MonoBehaviour
     private float timer = 0f;
     public float gameAreaWidth = 10f;
     public float gameAreaHeight = 5f;
-    public float [] speedAt, NewSpawnInterval;
+    public player_script plmv;
+    public int [] playerHealth;
+    public float [] NewSpawnInterval;
+    public float[] newSpeed;
     //public float spawnIntervalRate = 0.1f;
     [HideInInspector] public float timer12 = 0f;
 
     void Update()
     {
+
         if (SceneManager.GetActiveScene().name == "Game")
         {
             timer12 += Time.deltaTime;
@@ -95,11 +99,13 @@ public class Enemy : MonoBehaviour
             GenerateRandomEnemy();
             timer = 0f;
 
-            for (int i = 0; i < speedAt.Length; i++)
+            for (int i = 0; i < playerHealth.Length; i++)
             {
-                if( timer12 > speedAt[i])
+                if(plmv.health == playerHealth[i])
                 {
                     spawnInterval = NewSpawnInterval[i];
+                    Speed = newSpeed[i];
+                    Debug.Log("health is "+ i);
                 }
             }
             //if (timer12 > speedAt[0] && timer12 < speedAt[1])
@@ -111,6 +117,6 @@ public class Enemy : MonoBehaviour
             //    spawnInterval = 1f;
             //}
         }
-    }
+    }  
 }
    

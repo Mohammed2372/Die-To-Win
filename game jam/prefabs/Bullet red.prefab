@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 7251899526733744517}
   - component: {fileID: 424351404476144678}
   - component: {fileID: 6587275973224125362}
-  - component: {fileID: 7394944047087820714}
-  - component: {fileID: 7617156928314427457}
   m_Layer: 7
   m_Name: Bullet red
   m_TagString: bullet red
@@ -153,27 +151,3 @@ PolygonCollider2D:
       - {x: 0.1623087, y: -0.12620953}
       - {x: 0.3890291, y: -0.13649775}
       - {x: 0.6371355, y: -0.10067857}
---- !u!114 &7394944047087820714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7261497213932272368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 754ecd53185774046ae04a9f6194966b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7617156928314427457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7261497213932272368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d917ec4d50e1642438b95b5b5d286030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
